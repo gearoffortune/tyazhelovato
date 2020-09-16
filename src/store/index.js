@@ -36,5 +36,14 @@ export default new Vuex.Store({
     getSpentInput(state) {
       return Number(state.spentInput);
     },
+    getDaysLeft(state) {
+      const today = new Date();
+      const nextPaycheck = new Date(
+        today.getFullYear(),
+        today.getMonth() + 1,
+        state.paycheckDay,
+      );
+      return Math.floor((nextPaycheck - today) / (1000 * 60 * 60 * 24));
+    },
   },
 });

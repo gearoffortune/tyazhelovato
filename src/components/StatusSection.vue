@@ -1,25 +1,25 @@
 <template>
   <div class="statuspane">
-    <div class="statuspane__status">{{moneyLeft}} на {{daysLeft}}</div>
+    <div class="statuspane__status">{{moneyLeft}} на {{this.getDaysLeft}}</div>
     <button class="settingsButton" @click="openSettings">settings</button>
   </div>
 </template>
 
 <script>
-import daysLeft from '../mixins/dateMixin';
+import { mapGetters } from 'vuex';
 
 export default {
   computed: {
     moneyLeft() {
       return this.$store.state.moneyLeft;
     },
+    ...mapGetters(['getDaysLeft']),
   },
   methods: {
     openSettings() {
       this.$emit('open-settings');
     },
   },
-  mixins: [daysLeft],
 };
 </script>
 

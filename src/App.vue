@@ -1,9 +1,11 @@
 <template>
   <div id="app">
-    <SettingsScreen v-show="showSettings" @close-settings="closeSettings"/>
-    <StatusSection @open-settings="openSettings"/>
-    <CanSpendToday/>
-    <SpendingInput/>
+    <SettingsScreen v-if="showSettings" @close-settings="closeSettings"/>
+    <div v-else>
+      <StatusSection @open-settings="openSettings"/>
+      <CanSpendToday/>
+      <SpendingInput/>
+    </div>
 
   </div>
 </template>
