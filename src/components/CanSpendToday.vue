@@ -10,13 +10,13 @@ import { mapState, mapGetters } from 'vuex';
 export default {
   computed: {
     toSpendWithInput() {
-      if (this.moneyLeft / this.getDaysLeft - this.getSpentInput > 0) {
-        return this.moneyLeft / this.getDaysLeft - this.getSpentInput;
+      if (this.todayLeft - this.getSpentInput > 0) {
+        return this.todayLeft - this.getSpentInput;
       }
       return 0;
     },
-    ...mapState(['moneyLeft']),
-    ...mapGetters(['getSpentInput', 'getDaysLeft']),
+    ...mapState(['todayLeft']),
+    ...mapGetters(['getSpentInput']),
   },
 };
 </script>

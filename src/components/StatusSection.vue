@@ -1,19 +1,19 @@
 <template>
   <div class="statuspane">
-    <div class="statuspane__status">{{moneyLeft}} на {{this.getDaysLeft}}</div>
+    <div class="statuspane__status">{{moneyLeft}} на {{this.daysLeft}}</div>
     <button class="settingsButton" @click="openSettings">settings</button>
   </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapState } from 'vuex';
 
 export default {
   computed: {
     moneyLeft() {
       return this.$store.state.moneyLeft;
     },
-    ...mapGetters(['getDaysLeft']),
+    ...mapState(['daysLeft']),
   },
   methods: {
     openSettings() {
