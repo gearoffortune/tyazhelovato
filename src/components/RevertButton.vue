@@ -4,11 +4,12 @@
 
 <script>
 import { mapState } from 'vuex';
+import REVERT_LAST_SPENDING from '../store/types';
 
 export default {
   methods: {
     revert() {
-      this.$store.commit('REVERT_LAST_SPENDING');
+      this.$store.commit(REVERT_LAST_SPENDING);
     },
   },
   computed: mapState({ history: 'beforeLastSpending' }),
