@@ -4,6 +4,7 @@ import {
   NEW_SPENDING, NEW_MONTHLY_LIMIT, NEW_PAYCHECK_DAY, UPDATED_INPUT,
   SHOW_MODAL_MONEYLEFT, REMOVE_MODAL_MONEYLEFT,
   SPREAD_ON_ALL, SPEND_TODAY, SET_TODAY, SET_DAYS_LEFT,
+  REVERT_LAST_SPENDING,
 } from './types';
 
 Vue.use(Vuex);
@@ -18,9 +19,14 @@ export default new Vuex.Store({
     todayLeft: 0,
     todayDate: undefined,
     daysLeft: 30,
+    beforeLastSpending: undefined,
   },
   mutations: {
     [NEW_SPENDING](state, sum) {
+      state.beforeLastSpending = {
+        moneyLeft: state.moneyLeft,
+        todayLeft: state.todayLeft,
+      };
       if (sum <= state.todayLeft) {
         state.moneyLeft -= sum;
         state.todayLeft -= sum;
@@ -58,6 +64,11 @@ export default new Vuex.Store({
     },
     [SET_DAYS_LEFT](state, days) {
       state.daysLeft = days;
+    },
+    [REVERT_LAST_SPENDING](state) {
+      state.todayLeft = state.beforeLastSpending.todayLeft;
+      state.moneyLeft = state.beforeLastSpending.moneyLeft;
+      state.beforeLastSpending = undefined;
     },
   },
   actions: {

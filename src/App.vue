@@ -8,6 +8,7 @@
       <StatusSection @open-settings="openSettings"/>
       <CanSpendToday/>
       <SpendingInput/>
+      <RevertButton/>
     </div>
 
   </div>
@@ -20,6 +21,7 @@ import CanSpendToday from './components/CanSpendToday.vue';
 import SpendingInput from './components/SpendingInput.vue';
 import SettingsScreen from './components/SettingsScreen.vue';
 import MoneyLeftModal from './components/MoneyLeftModal.vue';
+import RevertButton from './components/RevertButton.vue';
 
 export default {
   name: 'App',
@@ -32,6 +34,7 @@ export default {
     SpendingInput,
     SettingsScreen,
     MoneyLeftModal,
+    RevertButton,
   },
   methods: {
     openSettings() {

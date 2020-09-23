@@ -21,8 +21,10 @@ export default {
   },
   methods: {
     newSpending() {
-      this.$store.commit(NEW_SPENDING, Number(this.input));
-      this.input = '';
+      if (this.input !== '') {
+        this.$store.commit(NEW_SPENDING, Number(this.input));
+        this.input = '';
+      }
     },
   },
 };
