@@ -1,6 +1,6 @@
 <template>
   <div class="statuspane">
-    <div class="statuspane__status">{{moneyLeft}} на {{this.daysLeft}}</div>
+    <div class="statuspane__status">{{moneyLeft}} на {{daysLeft}}</div>
     <button class="settingsButton" @click="openSettings">settings</button>
   </div>
 </template>
@@ -10,10 +10,7 @@ import { mapState } from 'vuex';
 
 export default {
   computed: {
-    moneyLeft() {
-      return this.$store.state.moneyLeft;
-    },
-    ...mapState(['daysLeft']),
+    ...mapState(['daysLeft', 'moneyLeft']),
   },
   methods: {
     openSettings() {
