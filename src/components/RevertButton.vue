@@ -1,10 +1,9 @@
 <template>
-  <button v-if="history" @click="revert">revert</button>
+  <button v-if="hasHistory" @click="revert">revert</button>
 </template>
 
 <script>
-import { mapState } from 'vuex';
-import REVERT_LAST_SPENDING from '../store/types';
+import { REVERT_LAST_SPENDING } from '../store/types';
 
 export default {
   methods: {
@@ -12,7 +11,13 @@ export default {
       this.$store.commit(REVERT_LAST_SPENDING);
     },
   },
-  computed: mapState({ history: 'beforeLastSpending' }),
+  props: {
+    hasHistory: {
+      type: Boolean,
+      default: false,
+      required: true,
+    },
+  },
 };
 </script>
 

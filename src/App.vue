@@ -3,12 +3,12 @@
     <button @click="save">save</button>
     <button @click="load">load</button>
     <SettingsScreen v-if="showSettings" @close-settings="closeSettings"/>
-    <MoneyLeftModal v-else-if="showModal()"/>
+    <MoneyLeftModal v-else-if="showModal"/>
     <div v-else>
       <StatusSection @open-settings="openSettings"/>
       <CanSpendToday/>
       <SpendingInput/>
-      <RevertButton/>
+      <RevertButton :hasHistory="hasHistory"/>
     </div>
 
   </div>
@@ -26,7 +26,9 @@ import RevertButton from './components/RevertButton.vue';
 export default {
   name: 'App',
   data() {
-    return { showSettings: false, ...mapState(['showModal']) };
+    return {
+      showSettings: false,
+    };
   },
   components: {
     StatusSection,
@@ -52,6 +54,12 @@ export default {
         const parsedState = JSON.parse(loadedState);
         this.$store.replaceState(parsedState);
       }
+    },
+  },
+  computed: {
+    ...mapState({ history: 'beforeLastSpending', showModal: 'showModal' }),
+    hasHistory() {
+      return !!this.history;
     },
   },
   mounted() {
