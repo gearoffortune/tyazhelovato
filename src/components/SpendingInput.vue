@@ -1,6 +1,6 @@
 <template>
   <div class="spendings-input">
-    <input v-model="input" type="text">
+    <input v-model.number="input" type="text">
     <button @click="newSpending">submit</button>
   </div>
 </template>
