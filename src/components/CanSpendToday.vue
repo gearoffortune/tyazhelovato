@@ -1,6 +1,9 @@
 <template>
   <div>
     <div class="moneyblock">{{toSpendWithInput}}</div>
+    <div v-if="moreThanTodayLeft">
+      Трата приведет к пересчету суточного лимита до {{getDailyWithInput}}
+    </div>
   </div>
 </template>
 
@@ -16,7 +19,10 @@ export default {
       return 0;
     },
     ...mapState(['todayLeft']),
-    ...mapGetters(['getSpentInput']),
+    ...mapGetters(['getSpentInput', 'getDailyWithInput']),
+    moreThanTodayLeft() {
+      return this.todayLeft < this.getSpentInput;
+    },
   },
 };
 </script>

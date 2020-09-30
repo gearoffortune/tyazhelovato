@@ -1,15 +1,14 @@
 <template>
 <div class="modal--money-left">
-  <CanSpendToday/>
+  <div>{{this.todayLeft + this.dailyBudget*(this.getTodayDate-this.todayDate)}}</div>
   <button @click="spendTodayHandler">Spend Today</button>
   <button @click="spreadOverHandler">Spread evenly</button>
 </div>
 </template>
 
 <script>
-import { mapMutations } from 'vuex';
+import { mapMutations, mapGetters, mapState } from 'vuex';
 import { SPREAD_ON_ALL, SPEND_TODAY, REMOVE_MODAL_MONEYLEFT } from '../store/types';
-import CanSpendToday from './CanSpendToday.vue';
 
 export default {
   methods: {
@@ -27,8 +26,9 @@ export default {
       this.removeModal();
     },
   },
-  components: {
-    CanSpendToday,
+  computed: {
+    ...mapGetters(['getTodayDate']),
+    ...mapState(['todayDate', 'todayLeft', 'dailyBudget']),
   },
 };
 </script>

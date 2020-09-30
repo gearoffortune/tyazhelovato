@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import { UPDATED_INPUT, NEW_SPENDING } from '../store/types';
+import { UPDATED_INPUT, NEW_SPENDING, UPDATE_DAILY_BUDGET_FROM_TOMORROW } from '../store/types';
 
 export default {
   computed: {
@@ -23,6 +23,7 @@ export default {
     newSpending() {
       if (this.input !== '') {
         this.$store.commit(NEW_SPENDING, Number(this.input));
+        this.$store.commit(UPDATE_DAILY_BUDGET_FROM_TOMORROW);
         this.input = '';
       }
     },
