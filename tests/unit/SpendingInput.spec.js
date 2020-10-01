@@ -12,7 +12,9 @@ describe('SpendingInput.vue', () => {
 
   beforeEach(() => {
     mutations = {
-      UPDATED_INPUT: jest.fn(), NEW_SPENDING: jest.fn(),
+      UPDATED_INPUT: jest.fn(),
+      NEW_SPENDING: jest.fn(),
+      UPDATE_DAILY_BUDGET_FROM_TOMORROW: jest.fn(),
     };
   });
 

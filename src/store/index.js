@@ -85,11 +85,20 @@ export default new Vuex.Store({
   actions: {
     INITIALISE(context) {
       const today = new Date();
-      const nextPaycheck = new Date(
-        today.getFullYear(),
-        today.getMonth() + 1,
-        context.state.paycheckDay,
-      );
+      let nextPaycheck;
+      if (today.getDate() > context.state.paycheckDay) {
+        nextPaycheck = new Date(
+          today.getFullYear(),
+          today.getMonth() + 1,
+          context.state.paycheckDay,
+        );
+      } else {
+        nextPaycheck = new Date(
+          today.getFullYear(),
+          today.getMonth(),
+          context.state.paycheckDay,
+        );
+      }
       const daysLeft = Math.floor((nextPaycheck - today) / (1000 * 60 * 60 * 24)) + 1;
       context.commit(SET_DAYS_LEFT, daysLeft);
 
