@@ -9,6 +9,7 @@
       <CanSpendToday/>
       <SpendingInput/>
       <RevertButton :hasHistory="hasHistory"/>
+      <Numpad/>
     </div>
 
   </div>
@@ -22,6 +23,7 @@ import SpendingInput from './components/SpendingInput.vue';
 import SettingsScreen from './components/SettingsScreen.vue';
 import MoneyLeftModal from './components/MoneyLeftModal.vue';
 import RevertButton from './components/RevertButton.vue';
+import Numpad from './components/Numpad.vue';
 
 export default {
   name: 'App',
@@ -37,6 +39,7 @@ export default {
     SettingsScreen,
     MoneyLeftModal,
     RevertButton,
+    Numpad,
   },
   methods: {
     openSettings() {

@@ -5,7 +5,8 @@ import {
   SHOW_MODAL_MONEYLEFT, REMOVE_MODAL_MONEYLEFT,
   SPREAD_ON_ALL, SPEND_TODAY, SET_TODAY, SET_DAYS_LEFT,
   REVERT_LAST_SPENDING, UPDATE_DAILY_BUDGET,
-  UPDATE_DAILY_BUDGET_FROM_TOMORROW,
+  UPDATE_DAILY_BUDGET_FROM_TOMORROW, NUMBER_CLICKED,
+  REMOVE_LAST_NUM,
 } from './types';
 
 Vue.use(Vuex);
@@ -80,6 +81,14 @@ export default new Vuex.Store({
     },
     [UPDATE_DAILY_BUDGET_FROM_TOMORROW](state) {
       state.dailyBudget = Math.floor((state.moneyLeft - state.todayLeft) / (state.daysLeft - 1));
+    },
+    [NUMBER_CLICKED](state, number) {
+      state.spentInput += String(number);
+    },
+    [REMOVE_LAST_NUM](state) {
+      if (state.spentInput.length > 0) {
+        state.spentInput = state.spentInput.slice(0, -1);
+      }
     },
   },
   actions: {
