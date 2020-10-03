@@ -10,7 +10,7 @@ export default {
   methods: {
     newSpending() {
       if (this.$store.state.spentInput !== '') {
-        this.$store.commit(NEW_SPENDING, Number(this.input));
+        this.$store.commit(NEW_SPENDING, Number(this.$store.state.spentInput));
         this.$store.commit(UPDATE_DAILY_BUDGET_FROM_TOMORROW);
         this.input = '';
       }
