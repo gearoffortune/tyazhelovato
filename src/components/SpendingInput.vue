@@ -1,12 +1,12 @@
 <template>
-  <div class="spendings-input">
-    <input v-model.number="input" v-on:keyup.enter="newSpending" type="text">
-    <button @click="newSpending">submit</button>
+  <div class="spendings">
+    <input class="spendings__input" v-model.number="input" v-on:keyup.enter="newSpending"
+    type="text" inputmode="decimal" placeholder="0">
   </div>
 </template>
 
 <script>
-import { UPDATED_INPUT, NEW_SPENDING, UPDATE_DAILY_BUDGET_FROM_TOMORROW } from '../store/types';
+import { UPDATED_INPUT } from '../store/types';
 
 export default {
   computed: {
@@ -19,18 +19,18 @@ export default {
       },
     },
   },
-  methods: {
-    newSpending() {
-      if (this.input !== '') {
-        this.$store.commit(NEW_SPENDING, Number(this.input));
-        this.$store.commit(UPDATE_DAILY_BUDGET_FROM_TOMORROW);
-        this.input = '';
-      }
-    },
-  },
 };
 </script>
 
 <style>
+.spendings__input {
+  padding: 0;
+  border: none;
+  height: 50px;
+  width: 400px;
+  font-size: 48px;
+  background: var(--backgound-black);
+  color: var(--textcolor-grey);
+}
 
 </style>

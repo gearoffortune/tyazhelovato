@@ -1,6 +1,7 @@
 <template>
-  <div>
-    <div class="moneyblock">{{toSpendWithInput}}</div>
+  <div class="canspendtoday">
+    <div class="canspendtoday__moneyblock">{{toSpendWithInput}}</div>
+    <div class="canspendtoday__textblock">На сегодня</div>
     <div v-if="moreThanTodayLeft">
       Трата приведет к пересчету суточного лимита до {{getDailyWithInput}}
     </div>
@@ -28,5 +29,22 @@ export default {
 </script>
 
 <style>
-
+.canspendtoday{
+  --border-color: #2E2F31;
+  margin: 0px 5px;
+  border-bottom: solid 2px var(--border-color);
+  border-top: solid 2px var(--border-color);
+  border-radius: 2px;
+}
+.canspendtoday__moneyblock {
+  font-size: 48px;
+  color: var(--textcolor-grey);
+  text-align: left;
+  font-weight: 600;
+}
+.canspendtoday__textblock {
+  font-size: 18px;
+  color: var(--textcolor-grey);
+  text-align: left;
+}
 </style>
