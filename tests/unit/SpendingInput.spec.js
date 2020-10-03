@@ -28,24 +28,4 @@ describe('SpendingInput.vue', () => {
     input.trigger('input');
     expect(mutations.UPDATED_INPUT).toHaveBeenCalled();
   });
-
-  it('commits NEW_SPENDING when input is entered and button is clicked', () => {
-    state = { spentInput: '1' };
-    store = new Vuex.Store({ state, mutations });
-
-    const wrapper = shallowMount(SpendingInput, { store, localVue });
-    const button = wrapper.find('button');
-    button.trigger('click');
-    expect(mutations.NEW_SPENDING).toHaveBeenCalled();
-  });
-
-  it('does not commit NEW_SPENDING when input is empty and button is clicked', () => {
-    state = { spentInput: '' };
-    store = new Vuex.Store({ state, mutations });
-
-    const wrapper = shallowMount(SpendingInput, { store, localVue });
-    const button = wrapper.find('button');
-    button.trigger('click');
-    expect(mutations.NEW_SPENDING).not.toHaveBeenCalled();
-  });
 });
