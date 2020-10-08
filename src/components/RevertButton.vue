@@ -1,5 +1,5 @@
 <template>
-  <button v-if="hasHistory" @click="revert">revert</button>
+  <button class="revert-button" v-if="hasHistory" @click="revert">Вернуть {{moneyToReturn}}</button>
 </template>
 
 <script>
@@ -17,10 +17,18 @@ export default {
       default: false,
       required: true,
     },
+    moneyToReturn: Number,
   },
 };
 </script>
 
 <style>
 
+.revert-button {
+  background: transparent;
+  color: #F4A541;
+  border: none;
+  font-size: 24px;
+  margin-right: 10px;
+}
 </style>

@@ -30,6 +30,7 @@ export default new Vuex.Store({
         moneyLeft: state.moneyLeft,
         todayLeft: state.todayLeft,
         dailyBudget: state.dailyBudget,
+        lastSpending: sum,
       };
       if (sum <= state.todayLeft) {
         state.moneyLeft -= sum;

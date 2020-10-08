@@ -7,8 +7,10 @@
     <div v-else>
       <StatusSection @open-settings="openSettings"/>
       <CanSpendToday/>
-      <SpendingInput/>
-      <RevertButton :hasHistory="hasHistory"/>
+      <div class="spendinginput-line">
+        <SpendingInput/>
+        <RevertButton :hasHistory="hasHistory" :moneyToReturn="lastSpending"/>
+      </div>
       <div class="editorbuttons">
         <Numpad/>
         <div class="editorbuttons__secondary">
@@ -75,6 +77,9 @@ export default {
     hasHistory() {
       return !!this.history;
     },
+    lastSpending() {
+      return this.hasHistory ? this.history.lastSpending : 0;
+    },
   },
   mounted() {
     this.$store.dispatch('INITIALISE');
@@ -120,4 +125,15 @@ body {
 .numpad {
   flex-grow: 1;
 }
+
+.spendinginput-line {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+}
+
+.spendings {
+  flex-grow: 1;
+}
+
 </style>

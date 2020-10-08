@@ -27,7 +27,7 @@ export default {
   padding: 0;
   border: none;
   height: 50px;
-  width: 400px;
+  width: 100%;
   font-size: 48px;
   background: var(--backgound-black);
   color: var(--textcolor-grey);
